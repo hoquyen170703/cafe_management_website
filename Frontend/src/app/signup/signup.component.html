@@ -34,7 +34,7 @@
                 <input matInput formControlName = "contactNumber" required>
                 <mat-error *ngIf="signupForm.controls.contactNumber.touched && signupForm.controls.contactNumber.invalid">
                     <span *ngIf="signupForm.controls.contactNumber.errors.required">Không được bỏ trống</span>
-                    <span *ngIf="signupForm.controls.contactNumber.errors.pattern">Tên không hợp lệ</span>
+                    <span *ngIf="signupForm.controls.contactNumber.errors.pattern">Số điện thoại không hợp lệ</span>
                 </mat-error>
             </mat-form-field>
 
@@ -46,7 +46,7 @@
                 </button>
                 <mat-error *ngIf="signupForm.controls.password.touched && signupForm.controls.password.invalid">
                     <span *ngIf="signupForm.controls.password.errors.required">Không được bỏ trống</span>
-                    <span *ngIf="signupForm.controls.password.errors.pattern">Tên không hợp lệ</span>
+                    <span *ngIf="signupForm.controls.password.errors.pattern">Mật khẩu không hợp lệ</span>
                 </mat-error>
             </mat-form-field>
 
@@ -58,7 +58,7 @@
                 </button>
                 <mat-error *ngIf="signupForm.controls.confirmPassword.touched && signupForm.controls.confirmPassword.invalid">
                     <span *ngIf="signupForm.controls.confirmPassword.errors.required">Không được bỏ trống</span>
-                    <span *ngIf="signupForm.controls.confirmPassword.errors.pattern">Tên không hợp lệ</span>
+                    <span *ngIf="signupForm.controls.confirmPassword.errors.pattern">Mật khẩu không hợp lệ</span>
                 </mat-error> 
                 <mat-hint *ngIf="validateSubmit() && !(signupForm.controls.confirmPassword.invalid)">
                     <span>New Password & Confirm Password doesn't match</span>

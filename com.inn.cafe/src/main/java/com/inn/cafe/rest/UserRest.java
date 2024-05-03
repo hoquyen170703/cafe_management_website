@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RequestMapping(path = "/user")
 public interface UserRest {
 
@@ -21,6 +21,7 @@ public interface UserRest {
 
     @PostMapping(path = "/update")
     public ResponseEntity<String> update(@RequestBody(required = true) Map<String, String> requestMap);
+
 
     @GetMapping(path = "/checkToken")
     public ResponseEntity<String> checkToken();

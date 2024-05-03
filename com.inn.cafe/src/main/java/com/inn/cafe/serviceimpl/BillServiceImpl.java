@@ -193,16 +193,12 @@ public class BillServiceImpl implements BillService {
             if (!requestMap.containsKey("uuid") && validateRequestMap(requestMap))
                 return new ResponseEntity<>(byteArray, HttpStatus.BAD_REQUEST);
             String filePath = CafeConstant.STORE_LOCATION+ "\\" + (String) requestMap.get("uuid") + ".pdf";
-            if (CafeUtils.isFileExist(filePath)) {
-                byteArray = getByteArray(filePath);
-                return new ResponseEntity<>(byteArray, HttpStatus.OK);
-            }
-            else {
+            if (!CafeUtils.isFileExist(filePath)) {
                 requestMap.put("isGenerated", "false");
                 generateReport(requestMap);
-                byteArray = getByteArray(filePath);
-                return new ResponseEntity<>(byteArray, HttpStatus.OK);
             }
+            byteArray = getByteArray(filePath);
+            return new ResponseEntity<>(byteArray, HttpStatus.OK);
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -223,7 +219,7 @@ public class BillServiceImpl implements BillService {
     public ResponseEntity<String> deleteBill(Integer id) {
         try {
             Optional<Bill> optional = billDao.findById(id);
-            if (!optional.isEmpty()) {
+            if (optional.isPresent()) {
                 billDao.deleteById(id);
                 return CafeUtils.getResponseEntity("Bill deleted successfully!", HttpStatus.OK);
             }
