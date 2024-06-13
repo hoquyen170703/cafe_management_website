@@ -3,12 +3,12 @@ package com.inn.cafe.serviceimpl;
 import com.google.common.base.Strings;
 import com.inn.cafe.JWT.JwtFilter;
 import com.inn.cafe.POJO.Category;
-import com.inn.cafe.POJO.User;
+
 import com.inn.cafe.constents.CafeConstant;
 import com.inn.cafe.dao.CategoryDao;
 import com.inn.cafe.service.CategoryService;
 import com.inn.cafe.ultils.CafeUtils;
-import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -50,9 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
         if (requestMap.containsKey("name")) {
             if (requestMap.containsKey("id") && validateId) {
                 return true;
-            } else if (!validateId) {
-                return true;
-            }
+            } else return !validateId;
         }
         return false;
     }
@@ -86,7 +84,7 @@ public class CategoryServiceImpl implements CategoryService {
             if (jwtFilter.isAdmin()) {
                 if (validateCategoryMap(requestMap, true)) {
                     Optional<Category> optional = categoryDao.findById(Integer.parseInt(requestMap.get("id")));
-                    if (!optional.isEmpty()) {
+                    if (optional.isPresent()) {
                         categoryDao.save(getCategoryFromMap(requestMap, true));
                         return CafeUtils.getResponseEntity("Category Updated Successfully", HttpStatus.OK);
                     } else {

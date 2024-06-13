@@ -55,7 +55,7 @@ export class ManageCategoryComponent implements OnInit {
   handleAddAction(){
     const dialogConfig = new MatDialogConfig()
     dialogConfig.data = {
-      action:"Add",
+      action:"Thêm",
       
     }
     dialogConfig.width ="850px"
@@ -70,7 +70,7 @@ export class ManageCategoryComponent implements OnInit {
   handleEditAction(values:any){
     const dialogConfig = new MatDialogConfig()
     dialogConfig.data = {
-      action:"Edit",
+      action:"Sửa",
       data: values
       
     }

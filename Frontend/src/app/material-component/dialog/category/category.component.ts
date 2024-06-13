@@ -77,7 +77,7 @@ export class CategoryComponent implements OnInit {
     }
     this.categoryService.update(data).subscribe((response:any)=>{
       this.dialogRef.close()
-      this.onAddCategory.emit();
+      this.onEditCategory.emit();
       this.responseMessage = response.message
       this.snackbarService.openSnackBar(this.responseMessage,"Success");
     },(error:any)=>{

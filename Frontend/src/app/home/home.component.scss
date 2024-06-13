@@ -57,6 +57,21 @@ body {
   padding: 20px;
 }
 
+ul li .btn{
+  
+  background-color: #ead8ef;
+  color: black;
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 15px 50px 30px 5px; 
+  cursor: pointer;
+}
+
+ul li .btn:hover {
+  background: #2196F3;
+  color: white;
+}
+
 /* Fake image, just for this example */
 .fakeimg {
   background-color: #aaa;
@@ -68,8 +83,8 @@ body {
 .footer {
   padding: 6px;
   text-align: center;
-  color: white;
-  background: #7b1fa2;
+  color: rgb(1, 0, 0);
+  background: #ead8ef;
 }
 
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
@@ -111,7 +126,7 @@ body {
   display: flex;
   align-items: center;
   justify-content:center;
-  background-color: #8e24aa;
+  background-color: #ead8ef;
 }
 
 nav {
@@ -136,7 +151,7 @@ ul {
 
 a {
   text-decoration: none;
-  color: #ffffff;
+  color: #100101;
   position: relative;
   font-size: 1.25em;
   cursor: pointer;
@@ -166,6 +181,7 @@ a {
   
   ul li a {
     margin-left: 0px;
+    
   }
 }
 
@@ -200,7 +216,7 @@ a {
 }
 .bg-image {
   /* The image used */
-  background-image: url("../../assets/img/food1.jpg");
+  background-image: url("../../assets/img/food1.webp");
   
   /* Add the blur effect */
   filter: blur(3px);
@@ -230,4 +246,133 @@ a {
   width: 55%;
   padding: 20px;
   text-align: center;
+}
+.flex-center {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+.text-center {
+  text-align: center;
+}
+.flex-col {
+  flex-direction: column;
+}
+*, :after, :before {
+  --tw-border-spacing-x: 0;
+  --tw-border-spacing-y: 0;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
+  --tw-scroll-snap-strictness: proximity;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
+  --tw-ring-offset-width: 0px;
+  --tw-ring-offset-color: #fff;
+  --tw-ring-color: rgba(59,130,246,.5);
+  --tw-ring-offset-shadow: 0 0 #0000;
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+}
+.flex-center {
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+.pt-12 {
+    padding-top: 3rem;
+}
+.pb-8 {
+    padding-bottom: 2rem;
+}
+.flex-col {
+    flex-direction: column;
+}
+.flex-1 {
+    flex: 1 1 0%;
+}
+*, :after, :before {
+    --tw-border-spacing-x: 0;
+    --tw-border-spacing-y: 0;
+    --tw-translate-x: 0;
+    --tw-translate-y: 0;
+    --tw-rotate: 0;
+    --tw-skew-x: 0;
+    --tw-skew-y: 0;
+    --tw-scale-x: 1;
+    --tw-scale-y: 1;
+    --tw-pan-x: ;
+    --tw-pan-y: ;
+    --tw-pinch-zoom: ;
+    --tw-scroll-snap-strictness: proximity;
+    --tw-ordinal: ;
+    --tw-slashed-zero: ;
+    --tw-numeric-figure: ;
+    --tw-numeric-spacing: ;
+    --tw-numeric-fraction: ;
+    --tw-ring-inset: ;
+    --tw-ring-offset-width: 0px;
+    --tw-ring-offset-color: #fff;
+    --tw-ring-color: rgba(59,130,246,.5);
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+    --tw-shadow: 0 0 #0000;
+    --tw-shadow-colored: 0 0 #0000;
+    --tw-blur: ;
+    --tw-brightness: ;
+    --tw-contrast: ;
+    --tw-grayscale: ;
+    --tw-hue-rotate: ;
+    --tw-invert: ;
+    --tw-saturate: ;
+    --tw-sepia: ;
+    --tw-drop-shadow: ;
+    --tw-backdrop-blur: ;
+    --tw-backdrop-brightness: ;
+    --tw-backdrop-contrast: ;
+    --tw-backdrop-grayscale: ;
+    --tw-backdrop-hue-rotate: ;
+    --tw-backdrop-invert: ;
+    --tw-backdrop-opacity: ;
+    --tw-backdrop-saturate: ;
+    --tw-backdrop-sepia: ;
+}
+*, :after, :before {
+    border: 0 solid #eee;
+    box-sizing: border-box;
+}
+
+div {
+    display: block;
+    unicode-bidi: isolate;
 }

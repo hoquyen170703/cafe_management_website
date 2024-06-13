@@ -95,8 +95,9 @@ public class BillServiceImpl implements BillService {
         table.addCell((String) data.get("name"));
         table.addCell((String) data.get("category"));
         table.addCell((String) data.get("quantity"));
-        table.addCell(Double.toString((Double) data.get("price")));
-        table.addCell(Double.toString((Double) data.get("total")));
+        table.addCell((String) data.get("price"));
+        Double total = Double.parseDouble((String) data.get("total"));
+        table.addCell(total.toString());
 
     }
 

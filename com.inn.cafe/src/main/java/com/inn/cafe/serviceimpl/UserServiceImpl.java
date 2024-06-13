@@ -68,11 +68,8 @@ public class UserServiceImpl implements UserService {
     }
 
     private boolean validateSignUpMap(Map<String, String> requestMap){
-        if( requestMap.containsKey("name") && requestMap.containsKey("contactNumber")
-                && requestMap.containsKey("email") && requestMap.containsKey("password")) {
-            return true;
-        }
-        return false;
+        return requestMap.containsKey("name") && requestMap.containsKey("contactNumber")
+                && requestMap.containsKey("email") && requestMap.containsKey("password");
     }
     private  User getUserFromMap(Map<String, String> requestMap) {
         User user = new User();
@@ -94,17 +91,17 @@ public class UserServiceImpl implements UserService {
             );
             if (auth.isAuthenticated()) {
                 if (customerUserDetailsService.getUserDetail().getStatus().equalsIgnoreCase("true")){
-                    return new ResponseEntity<String>("{\"token\":\"" + jwtUtil.generateToken(customerUserDetailsService.getUserDetail().getEmail()
-                            ,customerUserDetailsService.getUserDetail().getRole()) + "\"}", HttpStatus.OK);
+                    return new ResponseEntity<>("{\"token\":\"" + jwtUtil.generateToken(customerUserDetailsService.getUserDetail().getEmail()
+                            , customerUserDetailsService.getUserDetail().getRole()) + "\"}", HttpStatus.OK);
                 }
                 else {
-                    return new ResponseEntity<String>("{\"message\":\""+ "Wait for admin approval."+ "\"}", HttpStatus.BAD_REQUEST);
+                    return new ResponseEntity<>("{\"message\":\"" + "Wait for admin approval." + "\"}", HttpStatus.BAD_REQUEST);
                 }
             }
         } catch (Exception ex) {
-            log.error("{}", ex);
+            log.error(String.valueOf(ex));
         }
-        return new ResponseEntity<String>("{\"message\":\""+ "Bad Credentials"+ "\"}", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("{\"message\":\"" + "Bad Credentials" + "\"}", HttpStatus.BAD_REQUEST);
 
     }
 
@@ -114,12 +111,12 @@ public class UserServiceImpl implements UserService {
             if (jwtFilter.isAdmin()) {
                 return new ResponseEntity<>(userDao.getAllUser(), HttpStatus.OK);
             } else {
-                return new ResponseEntity<List<UserWrapper>>(new ArrayList<>(), HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity<>(new ArrayList<>(), HttpStatus.UNAUTHORIZED);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return new ResponseEntity<List<UserWrapper>>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
+        return new ResponseEntity<>(new ArrayList<>(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
 
@@ -129,7 +126,7 @@ public class UserServiceImpl implements UserService {
         try{
             if(jwtFilter.isAdmin()) {
                Optional<User> optional = userDao.findById(Integer.parseInt(requestMap.get("id")));
-               if (!optional.isEmpty()) {
+               if (optional.isPresent()) {
 
                    userDao.updateStatus(requestMap.get("status"), Integer.parseInt(requestMap.get("id")));
                    sendMailToALLAdmin(requestMap.get("status"), optional.get().getEmail(), userDao.getAllAdmin());

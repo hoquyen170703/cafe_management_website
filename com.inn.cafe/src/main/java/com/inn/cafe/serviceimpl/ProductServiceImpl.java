@@ -47,9 +47,7 @@ public class ProductServiceImpl implements ProductService {
         if (requestMap.containsKey("name")) {
             if (requestMap.containsKey("id") && validateId) {
                 return true;
-            } else if (!validateId) {
-                return true;
-            }
+            } else return !validateId;
         }
         return false;
     }
@@ -89,7 +87,7 @@ public class ProductServiceImpl implements ProductService {
             if (jwtFilter.isAdmin()) {
                 if (validateProductMap(requestMap, true)) {
                     Optional<Product> optional = productDao.findById(Integer.parseInt(requestMap.get("id")));
-                    if (!optional.isEmpty()) {
+                    if (optional.isPresent()) {
                         Product product = getProductFromMap(requestMap, true);
                         product.setStatus(optional.get().getStatus());
                         productDao.save(product);
@@ -115,7 +113,7 @@ public class ProductServiceImpl implements ProductService {
         try {
             if (jwtFilter.isAdmin()) {
                 Optional<Product> optional = productDao.findById(id);
-                if (!optional.isEmpty()) {
+                if (optional.isPresent()) {
                     productDao.deleteById(id);
                     return CafeUtils.getResponseEntity("Product Deleted Successfully", HttpStatus.OK);
                 }
@@ -134,7 +132,7 @@ public class ProductServiceImpl implements ProductService {
         try {
             if (jwtFilter.isAdmin()) {
                Optional<Product> optional =  productDao.findById(Integer.parseInt(requestMap.get("id")));
-                if (!optional.isEmpty()) {
+                if (optional.isPresent()) {
                     productDao.updateProductStatus(requestMap.get("status"), Integer.parseInt(requestMap.get("id")));
                     return CafeUtils.getResponseEntity("Product Status Updated Successfully", HttpStatus.OK);
                 }

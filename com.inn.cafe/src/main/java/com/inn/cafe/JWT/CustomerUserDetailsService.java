@@ -1,6 +1,7 @@
 package com.inn.cafe.JWT;
 
 import com.inn.cafe.dao.UserDao;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -19,6 +20,7 @@ public class CustomerUserDetailsService implements UserDetailsService {
     @Autowired
     UserDao userDao;
 
+    @Getter
     private com.inn.cafe.POJO.User userDetail;
 
     @Override
@@ -33,8 +35,4 @@ public class CustomerUserDetailsService implements UserDetailsService {
         }
     }
 
-    public com.inn.cafe.POJO.User getUserDetail() {
-
-        return userDetail;
-    }
 }

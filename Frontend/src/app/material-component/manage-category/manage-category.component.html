@@ -1,15 +1,15 @@
 
 <mat-card>
-    <b><span>Manage Category</span></b>
+    <b><span>Quản lý loại sản phẩm</span></b>
     <button mat-flat-button color="primary" class="float-right" (click)="handleAddAction()">
-        <mat-icon>add_circle</mat-icon> Add Category
+        <mat-icon>add_circle</mat-icon> Thêm loại sản phẩm
     </button>
     
 </mat-card>
 <hr>
 <mat-card>
     <mat-form-field appearance="standard">
-        <mat-label>Filter</mat-label>
+        <mat-label>Lọc</mat-label>
         <input matInput (keyup)="applyFilter($event)" #input>
     </mat-form-field>
 </mat-card>
@@ -17,7 +17,7 @@
 <div class="responsive_table">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <th mat-header-cell *matHeaderCellDef>Tên loại</th>
             <td mat-cell *matCellDef="let element">{{element.name}}</td>
         </ng-container>
 

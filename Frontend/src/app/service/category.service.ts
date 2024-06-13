@@ -26,9 +26,21 @@ export class CategoryService {
       }
     )
   }
+
+  delete(data:any, id:any) {
+    return this.httpClient.post(
+      this.url+`/category/delete/{$id}`, data,{
+        headers: new HttpHeaders().set('Content-Type',"application/json")
+      }
+    )
+  }
   getCategory() {
     return this.httpClient.get(
       this.url+"/category/get");
     
+  }
+  getFilteredCategorys(){
+    return this.httpClient.get(
+      this.url+"/category/get?filterValue=true");
   }
 }
