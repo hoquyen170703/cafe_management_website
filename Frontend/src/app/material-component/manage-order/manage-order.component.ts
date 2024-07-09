@@ -107,11 +107,11 @@ export class ManageOrderComponent implements OnInit {
     setQuantity(value:any){
       var temp = this.manageOrderForm.controls['quantity'].value;
       if(temp > 0){
-        this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
+        this.manageOrderForm.controls['total'].setValue((this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value).toString())
       }
       else if(temp != ''){
         this.manageOrderForm.controls['quantity'].setValue('1');
-      }this.manageOrderForm.controls['total'].setValue(this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value)
+      }this.manageOrderForm.controls['total'].setValue((this.manageOrderForm.controls['quantity'].value * this.manageOrderForm.controls['price'].value).toString())
     }
 
     validateProductAdd(){
