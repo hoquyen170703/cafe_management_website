@@ -1,6 +1,4 @@
 package com.inn.cafe.JWT;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -58,7 +56,7 @@ public class SecurityConfig {
                 .exceptionHandling(customizer -> customizer.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .csrf(AbstractHttpConfigurer::disable)
                 .sessionManagement(customizer -> customizer.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(request -> request.requestMatchers("/user/login", "/user/signup", "/user/forgotPassword")
+                .authorizeHttpRequests(request -> request.requestMatchers("/user/login", "/user/signup", "/user/forgotedPassword")
                         .permitAll()
                         .anyRequest().authenticated())
 
