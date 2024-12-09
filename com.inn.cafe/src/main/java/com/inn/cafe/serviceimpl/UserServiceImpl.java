@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -44,6 +45,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     EmailUtils emailUtils;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public ResponseEntity<String> signUp(Map<String, String> requestMap) {
@@ -76,7 +79,7 @@ public class UserServiceImpl implements UserService {
         user.setName(requestMap.get("name"));
         user.setContactNumber(requestMap.get("contactNumber"));
         user.setEmail(requestMap.get("email"));
-        user.setPassword(requestMap.get("password"));
+        user.setPassword(passwordEncoder.encode(requestMap.get("password")));
         user.setStatus("false");
         user.setRole("user");
         return user;
